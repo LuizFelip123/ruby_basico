@@ -1,7 +1,11 @@
+require_relative "inicializacao"
+require_relative "sortear_numero"
 class AdvinharNumero
     attr_reader :numero, :venceu 
+
     def initialize 
-        @numero = Random.rand(10)
+        Inicializacao.iniciar
+        @numero = SortearNumero.sortear
         @venceu = false
     end
 
@@ -15,11 +19,4 @@ class AdvinharNumero
             "O número informado é menor !!"
         end
     end
-end
-jogo = AdvinharNumero.new
-
-until jogo.venceu do
-puts "Digite um número"
-numero = gets.chomp.to_i
-puts jogo.tentar_adivinhar numero
 end
